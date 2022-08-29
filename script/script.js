@@ -27,9 +27,17 @@ function startGame()
     }
 }
 
-function nextTurn(square)
+async function nextTurn(square)
 {
-    turn(square.target.id,huPlayer);
+    //To prevent repeat click on single check box
+    //id of that check box is replaced by 'huPlayer' or 'aiPlayer'
+    //So it is checked that it wasn't clicked before
+    if(typeof origBoard[square.target.id]=='number')
+    {
+        let breakOrContinue=turn(square.target.id,huPlayer);
+        if(breakOrContinue) setTimeout(() => { if(!checkTie()) turn(bestSpot(),aiPlayer); }, 200);
+        console.log(origBoard);
+    }
 }
 
 function turn(squareID,player)
@@ -37,7 +45,12 @@ function turn(squareID,player)
     origBoard[squareID] = player;
     document.getElementById(squareID).innerText=player;
     let gameWon=checkWin(origBoard,player);
-    if(gameWon) gameOver(gameWon);
+    if(gameWon) 
+    {
+        gameOver(gameWon);
+        return false;
+    }
+    return true;
 }
 
 function checkWin(board,player)
@@ -64,13 +77,48 @@ function checkWin(board,player)
 
 function gameOver(gameWon)
 {
+    for(var i=0;i<cells.length;i++)
+        {
+            cells[i].style.backgroundColor="silver";
+            cells[i].removeEventListener('click',nextTurn,false);
+        }
     for(let index of winCombos[gameWon.index])
     {
         document.getElementById(index).style.backgroundColor = 
-        gameWon.player == huPlayer?"green":"red";
+        gameWon.player == huPlayer?"limegreen":"coral";
     }
-    for(var i=0;i<cells.length;i++)
+    declareWinner(gameWon.player == huPlayer? "You Win!!" : "You Lose!!");
+}
+
+function bestSpot()
+{
+    //list of remaining spots
+    let emptySquare= origBoard.filter(s => typeof s=='number');
+    
+    //returning a random empty spot let say 1st from list
+    return emptySquare[0];
+}
+
+function checkTie()
+{
+    //list of remaining spots
+    let emptySquare= origBoard.filter(s => typeof s=='number');
+    if(emptySquare.length==0)
     {
-        cells[i].removeEventListener('click',nextTurn,false);
+        for(var i=0;i<cells.length;i++)
+        {
+            cells[i].style.backgroundColor=
+            origBoard[i]=='X'?"olive":"teal";
+            cells[i].removeEventListener('click',nextTurn,false);
+        }
+        declareWinner("It's a Tie");
+        return true;
     }
+    return false;
+}
+
+function declareWinner(winner)
+{
+    document.querySelector(".endgame").style.display="bloack";
+    document.querySelector(".endgame .text").innerText = winner;
 }
