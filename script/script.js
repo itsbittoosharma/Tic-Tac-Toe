@@ -119,6 +119,6 @@ function checkTie()
 
 function declareWinner(winner)
 {
-    document.querySelector(".endgame").style.display="bloack";
+    document.querySelector(".endgame").style.display="block";
     document.querySelector(".endgame .text").innerText = winner;
 }

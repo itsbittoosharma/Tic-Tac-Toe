@@ -21,12 +21,12 @@ table {
 } */
 .endgame {
     display: none;
-    width: 200px;
-    top: 120px;
-    background-color: rgba(205,133,63, 0.8);
+    width: 30%;
+    top: 45%;
+    background-color: rgba(248, 141, 19, 0.936);
     position: absolute;
-    left: 50%;
-    margin-left: -100px;
+    left: 35%;
+    /* margin-left: -100px; */
     padding-top: 50px;
     padding-bottom: 50px;
     text-align: center;
