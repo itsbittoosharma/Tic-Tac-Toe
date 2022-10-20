@@ -9,7 +9,7 @@ const winCombos = [
 	[1, 4, 7],
 	[2, 5, 8],
 	[0, 4, 8],
-	[6, 4, 2]
+	[2, 4, 6]
 ]
 
 const cells = document.querySelectorAll('.cell');
