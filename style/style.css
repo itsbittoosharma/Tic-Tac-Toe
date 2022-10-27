@@ -15,14 +15,16 @@ table {
     margin-left: -155px;
     top: 100px;
 }
+
 /* button {
     position: absolute;
     left: 50%;
 } */
+
 .endgame {
     display: none;
     width: 200px;
-    top: 150px;
+    top: 100px;
     background-color: rgba(248, 141, 19, 0.936);
     position: absolute;
     left: 50%;
@@ -31,6 +33,6 @@ table {
     padding-bottom: 50px;
     text-align: center;
     border-radius: 5px;
-    color: white;
-    font-size: 2em;
+    color: blue;
+    font-size: 1em;
   }
