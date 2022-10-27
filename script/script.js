@@ -9,7 +9,7 @@ const winCombos = [
 	[1, 4, 7],
 	[2, 5, 8],
 	[0, 4, 8],
-	[2, 4, 6]
+	[6, 2, 4]
 ]
 
 const cells = document.querySelectorAll('.cell');
@@ -42,16 +42,15 @@ function turn(squareId, player) {
 function checkWin(board, player) {
 	let plays = board.reduce((a, e, i) =>
 		(e === player) ? a.concat(i) : a, []);
-	let gameWon = null;
+	let game_Won = null;
 	for (let [index, win] of winCombos.entries()) {
 		if (win.every(elem => plays.indexOf(elem) > -1)) {
-			gameWon = {index: index, player: player};
+			game_Won = {index: index, player: player};
 			break;
 		}
 	}
-	return gameWon;
+	return game_Won;
 }
-
 function gameOver(gameWon) {
 	for (let index of winCombos[gameWon.index]) {
 		document.getElementById(index).style.backgroundColor =
@@ -82,7 +81,7 @@ function checkTie() {
 			cells[i].style.backgroundColor = "green";
 			cells[i].removeEventListener('click', turnClick, false);
 		}
-		declareWinner("Tie Game!")
+		declareWinner("A tie game!")
 		return true;
 	}
 	return false;
@@ -116,7 +115,6 @@ function minimax(newBoard, player) {
 
 		moves.push(move);
 	}
-
 	var bestMove;
 	if(player === aiPlayer) {
 		var bestScore = -10000;
@@ -135,6 +133,5 @@ function minimax(newBoard, player) {
 			}
 		}
 	}
-
 	return moves[bestMove];
 }
