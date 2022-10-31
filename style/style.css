@@ -26,11 +26,10 @@ table {
     top: 100px;
 }
 
-
-/* button {
+button {
     position: absolute;
     left: 50%;
-} */
+}
 
 .endgame {
     display: none;
