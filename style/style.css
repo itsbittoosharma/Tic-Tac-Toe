@@ -8,6 +8,16 @@ td {
     font-size: 65px;
     cursor: pointer;
 }
+
+body {
+    background-image: url("../public/background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+}
+
 table {
     border-collapse: collapse;
     position: absolute;
@@ -15,6 +25,7 @@ table {
     margin-left: -155px;
     top: 100px;
 }
+
 
 /* button {
     position: absolute;
@@ -35,4 +46,4 @@ table {
     border-radius: 5px;
     color: blue;
     font-size: 1em;
-  }
+}
