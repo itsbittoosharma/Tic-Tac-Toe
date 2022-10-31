@@ -8,6 +8,16 @@ td {
     font-size: 65px;
     cursor: pointer;
 }
+
+body {
+    background-image: url("../public/background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+}
+
 table {
     border-collapse: collapse;
     position: absolute;
@@ -16,10 +26,19 @@ table {
     top: 100px;
 }
 
-/* button {
+.main button {
     position: absolute;
     left: 50%;
-} */
+    background-color: #4CAF50;
+    /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
 
 .endgame {
     display: none;
@@ -35,4 +54,4 @@ table {
     border-radius: 5px;
     color: blue;
     font-size: 1em;
-  }
+}
